@@ -23,6 +23,14 @@ class OptionalsTest {
     assertEmpty(map(emptyOptional)(_ * 3))
   }
 
+  @Test def testMapOnOptional(): Unit = {
+    val mappedOptional = map(optional)({
+      case n if n == optionalValue => "success"
+      case _ => "fail"
+    })
+    assertEquals(Some("success"), mappedOptional)
+  }
+
   def assertEmpty[A](optional: Option[A]): Unit = assertTrue(isEmpty(optional))
 
   def assertNotEmpty[A](optional: Option[A]): Unit = assertFalse(isEmpty(optional))

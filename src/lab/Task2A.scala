@@ -11,4 +11,5 @@ object Task2A {
     case _ => "odd"
   }
 
+  val negVal: (String => Boolean) => String => Boolean = predicate => !predicate(_)
 }

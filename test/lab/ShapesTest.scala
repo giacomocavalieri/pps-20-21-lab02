@@ -31,10 +31,14 @@ class ShapesTest {
   }
 
   def testShapePerimeter(expected: Double, shape: Shape) {
-    assertEquals(expected, perimeter(shape), doubleDelta)
+    testShapeMap(expected, shape, perimeter)
   }
 
-  def testShapeArea(expected: Double, shape: Shape): Unit = {
-    assertEquals(expected, area(shape), doubleDelta)
+  def testShapeArea(expected: Double, shape: Shape) {
+    testShapeMap(expected, shape, area)
+  }
+
+  def testShapeMap(expected: Double, shape: Shape, map: Shape => Double) {
+    assertEquals(expected, map(shape), doubleDelta)
   }
 }

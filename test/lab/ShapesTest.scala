@@ -20,6 +20,7 @@ class ShapesTest {
     val edge2 = 1.11
     val rectangle = Rectangle(edge1, edge2)
     testShapePerimeter((edge1 + edge2) * 2, rectangle)
+    testShapeArea(edge1 * edge2, rectangle)
   }
 
   @Test def testSquarePerimeter(): Unit = {

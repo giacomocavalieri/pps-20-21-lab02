@@ -31,6 +31,12 @@ class OptionalsTest {
     assertEquals(Some("success"), mappedOptional)
   }
 
+  @Test def testMap2WithEmptyInput(): Unit = {
+    assertEmpty(map2(optional)(emptyOptional)(_ + _))
+    assertEmpty(map2(emptyOptional)(optional)(_ + _))
+    assertEmpty(map2(emptyOptional)(emptyOptional)(_ + _))
+  }
+
   def assertEmpty[A](optional: Option[A]): Unit = assertTrue(isEmpty(optional))
 
   def assertNotEmpty[A](optional: Option[A]): Unit = assertFalse(isEmpty(optional))

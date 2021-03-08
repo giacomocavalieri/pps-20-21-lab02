@@ -26,6 +26,17 @@ class Task2ATest {
     testNeg(negMethod)
   }
 
+  @Test def testGenericNegOnStrings() {
+    testNeg(genericNeg)
+  }
+
+  @Test def testGenericNegOnInt() {
+    val equals5: Int => Boolean = _ == 5
+    val not5 = genericNeg(equals5)
+    assertTrue(not5(4))
+    assertFalse(not5(5))
+  }
+
   def testNeg(neg: (String => Boolean) => String => Boolean) {
     val empty: String => Boolean = _ == ""
     val notEmpty = neg(empty)

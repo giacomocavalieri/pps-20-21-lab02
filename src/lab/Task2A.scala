@@ -12,4 +12,6 @@ object Task2A {
   }
 
   val negVal: (String => Boolean) => String => Boolean = predicate => !predicate(_)
+
+  def negMethod(predicate: String => Boolean): String => Boolean = !predicate(_)
 }

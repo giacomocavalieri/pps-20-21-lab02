@@ -18,9 +18,17 @@ class Task2ATest {
     assertEquals("odd", parityFunction(1))
   }
 
-  @Test def testNegVal(): Unit = {
+  @Test def testNegVal() {
+    testNeg(negVal)
+  }
+
+  @Test def testNegMethod() {
+    testNeg(negMethod)
+  }
+
+  def testNeg(neg: (String => Boolean) => String => Boolean) {
     val empty: String => Boolean = _ == ""
-    val notEmpty = negVal(empty)
+    val notEmpty = neg(empty)
     assertTrue(notEmpty("foo"))
     assertFalse(notEmpty(""))
   }

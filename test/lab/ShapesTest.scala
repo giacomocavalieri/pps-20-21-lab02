@@ -27,6 +27,7 @@ class ShapesTest {
     val edge = 11.1
     val square = Square(edge)
     testShapePerimeter(edge * 4, square)
+    testShapeArea(edge * edge, square)
   }
 
   def testShapePerimeter(expected: Double, shape: Shape) {

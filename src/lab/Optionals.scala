@@ -25,5 +25,7 @@ object Optionals {
       case value if predicate(value) => Some(value)
       case _ => None()
     })
+
+    def map[A, B](opt: Option[A])(f: A => B): Option[B] = flatMap(opt)(value => Some(f(value)))
   }
 }

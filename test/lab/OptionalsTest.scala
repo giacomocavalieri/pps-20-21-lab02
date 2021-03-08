@@ -19,6 +19,10 @@ class OptionalsTest {
     assertEmpty(filter(optional)(_ != optionalValue))
   }
 
+  @Test def testMapOnEmptyOptional(): Unit = {
+    assertEmpty(map(emptyOptional)(_ * 3))
+  }
+
   def assertEmpty[A](optional: Option[A]): Unit = assertTrue(isEmpty(optional))
 
   def assertNotEmpty[A](optional: Option[A]): Unit = assertFalse(isEmpty(optional))

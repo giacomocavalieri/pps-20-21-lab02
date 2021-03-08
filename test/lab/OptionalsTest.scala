@@ -28,13 +28,21 @@ class OptionalsTest {
       case n if n == optionalValue => "success"
       case _ => "fail"
     })
-    assertEquals(Some("success"), mappedOptional)
+    val expectedOptional = Some("success")
+    assertEquals(expectedOptional, mappedOptional)
   }
 
   @Test def testMap2WithEmptyInput(): Unit = {
     assertEmpty(map2(optional)(emptyOptional)(_ + _))
     assertEmpty(map2(emptyOptional)(optional)(_ + _))
     assertEmpty(map2(emptyOptional)(emptyOptional)(_ + _))
+  }
+
+  @Test def testMap2(): Unit = {
+    val stringOptional = map(optional)(_.toString)
+    val mappedOptional = map2(optional)(stringOptional)(_ + " " + _)
+    val expectedOptional = Some("11 11")
+    assertEquals(expectedOptional, mappedOptional)
   }
 
   def assertEmpty[A](optional: Option[A]): Unit = assertTrue(isEmpty(optional))

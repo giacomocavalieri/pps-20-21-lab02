@@ -11,8 +11,7 @@ class OptionalsTest {
   val optional: Option[Int] = Some(optionalValue)
 
   @Test def filterOnEmptyOptionalTest(): Unit = {
-    val predicate: Int => Boolean = _ > 3
-    assertEmpty(filter(emptyOptional, predicate))
+    assertEmpty(filter(emptyOptional)(_ > 3))
   }
 
   def assertEmpty[A](optional: Option[A]): Unit = assertTrue(isEmpty(optional))

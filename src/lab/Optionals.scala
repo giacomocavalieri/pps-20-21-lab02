@@ -21,7 +21,7 @@ object Optionals {
       case _ => None()
     }
 
-    def filter[A](opt: Option[A], predicate: A => Boolean): Option[A] = flatMap(opt)({
+    def filter[A](opt: Option[A])(predicate: A => Boolean): Option[A] = flatMap(opt)({
       case value if predicate(value) => Some(value)
       case _ => None()
     })

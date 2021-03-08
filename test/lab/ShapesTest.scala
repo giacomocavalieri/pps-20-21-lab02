@@ -8,10 +8,11 @@ import org.junit.jupiter.api.Test
 class ShapesTest {
   val doubleDelta = 0.001
 
-  @Test def testCirclePerimeter() {
-    val circleRadius = 4
+  @Test def testCircle() {
+    val circleRadius = 11.1
     val circle = Circle(circleRadius)
-    testShapePerimeter(2 * math.Pi * circleRadius, circle)
+    testShapePerimeter(math.Pi * 2 * circleRadius, circle)
+    testShapeArea(math.Pi * circleRadius * circleRadius, circle)
   }
 
   @Test def testRectanglePerimeter() {
@@ -21,7 +22,17 @@ class ShapesTest {
     testShapePerimeter((edge1 + edge2) * 2, rectangle)
   }
 
+  @Test def testSquarePerimeter(): Unit = {
+    val edge = 11.1
+    val square = Square(edge)
+    testShapePerimeter(edge * 4, square)
+  }
+
   def testShapePerimeter(expected: Double, shape: Shape) {
     assertEquals(expected, perimeter(shape), doubleDelta)
+  }
+
+  def testShapeArea(expected: Double, shape: Shape): Unit = {
+    assertEquals(expected, area(shape), doubleDelta)
   }
 }

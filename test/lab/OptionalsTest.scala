@@ -14,5 +14,12 @@ class OptionalsTest {
     assertEmpty(filter(emptyOptional)(_ > 3))
   }
 
+  @Test def filterOnOptional(): Unit = {
+    assertNotEmpty(filter(optional)(_ == optionalValue))
+    assertEmpty(filter(optional)(_ != optionalValue))
+  }
+
   def assertEmpty[A](optional: Option[A]): Unit = assertTrue(isEmpty(optional))
+
+  def assertNotEmpty[A](optional: Option[A]): Unit = assertFalse(isEmpty(optional))
 }

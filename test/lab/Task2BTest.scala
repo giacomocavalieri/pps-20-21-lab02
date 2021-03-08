@@ -31,4 +31,19 @@ class Task2BTest {
     assertTrue(f(10, 11, 12))
     assertFalse(f(10, 11, 9))
   }
+
+  @Test def testComposition() {
+    val f: String => Boolean = {
+      case "pos" => true
+      case "neg" => false
+    }
+    val g: Int => String = {
+      case n if n > 0 => "pos"
+      case _ => "neg"
+    }
+    val isPositive = compose(f, g)
+
+    assertTrue(isPositive(10))
+    assertFalse(isPositive(-10))
+  }
 }

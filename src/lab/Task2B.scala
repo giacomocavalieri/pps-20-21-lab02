@@ -5,4 +5,6 @@ object Task2B {
   val curriedVal: Int => Int => Int => Boolean = x => y => z => nonCurriedVal(x, y, z)
   def nonCurriedDef(x: Int, y: Int, z: Int): Boolean = nonCurriedVal(x, y, z)
   def curriedDef(x: Int)(y: Int)(z: Int): Boolean = nonCurriedVal(x, y, z)
+
+  def compose[A, B, C](f: B => C, g: A => B): A => C = x => f(g(x))
 }

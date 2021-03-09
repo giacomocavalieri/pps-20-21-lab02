@@ -6,7 +6,7 @@ object Trees extends App {
     case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
     case class Leaf[A](value: A) extends Tree[A]
 
-    def size[A](tree: Tree[A]): Int = reduce(tree, (_: Int) + (_: Int), 1)
+    def size[A](tree: Tree[A]): Int = reduce(tree, (_: Int) + (_: Int), (_: A) => 1)
 
     def find[A](tree: Tree[A], toFind: A): Boolean =
       reduce(tree, (_: Boolean) || (_: Boolean), (_: A) == toFind)
@@ -21,8 +21,6 @@ object Trees extends App {
       case Branch(left, right) => f(reduce(left, f, base), reduce(right, f, base))
       case Leaf(value) => base(value)
     }
-
-    def reduce[A, B](tree: Tree[A], f: (B, B) => B, base: B): B = reduce(tree, f, (_: A) => base)
   }
 
   import Tree._

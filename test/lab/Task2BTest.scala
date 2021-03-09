@@ -10,7 +10,7 @@ class Task2BTest {
   }
 
   @Test def testNonCurriedVal() {
-    nonCurriedVal(1, 2, 3)
+    testNonCurriedFunction(nonCurriedVal)
   }
 
   @Test def testCurriedDef() {
@@ -18,7 +18,7 @@ class Task2BTest {
   }
 
   @Test def testNonCurriedDef() {
-    nonCurriedDef(1, 2, 3)
+    testNonCurriedFunction(nonCurriedDef)
   }
 
   def testCurriedFunction(f: Int => Int => Int => Boolean) {
